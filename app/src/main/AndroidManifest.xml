@@ -2,15 +2,11 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.android.treasureHunt">
 
-    <!--
-        The FINE_LOCATION permission is required for geofencing functionality to work.
-    -->
+    <!-- Permissions required for geofencing functionality to work. -->
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
 
-    <!--
-        The BACKGROUND_LOCATION permission is required for geofencing functionality to work on Q+
-    -->
+    <!-- Permission required for geofencing functionality to work on Q+. -->
     <uses-permission android:name="android.permission.ACCESS_BACKGROUND_LOCATION" />
 
     <application

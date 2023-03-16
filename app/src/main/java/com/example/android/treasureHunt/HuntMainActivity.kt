@@ -142,21 +142,6 @@ class HuntMainActivity : AppCompatActivity() {
 					R.string.settings,
 					::openSettings
 				)
-				/*
-				Snackbar.make(
-					binding.activityMapsMain,
-					R.string.permission_denied_explanation, Snackbar.LENGTH_INDEFINITE
-				)
-					.setAction(R.string.settings) {
-						// Displays App settings screen.
-						startActivity(Intent().apply {
-							action = Settings.ACTION_APPLICATION_DETAILS_SETTINGS
-							val uri: Uri = Uri.fromParts("package", packageName, null)
-							data = uri
-							flags = Intent.FLAG_ACTIVITY_NEW_TASK
-						})
-					}.show()
-				 */
 			} else {
 				checkDeviceLocationSettingsAndStartGeofence()
 			}
@@ -229,14 +214,6 @@ class HuntMainActivity : AppCompatActivity() {
 					android.R.string.ok,
 					::checkDeviceLocationSettingsAndStartGeofence
 				)
-				/*
-				Snackbar.make(
-					binding.activityMapsMain,
-					R.string.location_required_error, Snackbar.LENGTH_INDEFINITE
-				).setAction(android.R.string.ok) {
-					checkDeviceLocationSettingsAndStartGeofence()
-				}.show()
-				 */
 			}
 		}
 		locationSettingsResponseTask.addOnCompleteListener {
@@ -306,24 +283,6 @@ class HuntMainActivity : AppCompatActivity() {
 
 		// Build the Geofence Object
 		val geofence = buildGeofence(currentGeofenceData)
-		/*
-		val geofence = Geofence.Builder()
-			// Set the request ID, string to identify the geofence.
-			.setRequestId(currentGeofenceData.id)
-			// Set the circular region of this geofence.
-			.setCircularRegion(
-				currentGeofenceData.latLong.latitude,
-				currentGeofenceData.latLong.longitude,
-				GeofencingConstants.GEOFENCE_RADIUS_IN_METERS
-			)
-			// Set the expiration duration of the geofence. This geofence gets
-			// automatically removed after this period of time.
-			.setExpirationDuration(GeofencingConstants.GEOFENCE_EXPIRATION_IN_MILLISECONDS)
-			// Set the transition types of interest. Alerts are only generated for these
-			// transition. We track entry and exit transitions in this sample.
-			.setTransitionTypes(Geofence.GEOFENCE_TRANSITION_ENTER)
-			.build()
-		 */
 
 		// Build the geofence request
 		val geofencingRequest = GeofencingRequest.Builder()
