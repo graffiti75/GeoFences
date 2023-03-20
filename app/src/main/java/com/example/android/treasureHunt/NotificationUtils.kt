@@ -63,11 +63,15 @@ fun createChannel(context: Context) {
 fun NotificationManager.sendGeofenceEnteredNotification(context: Context, foundIndex: Int) {
     val contentIntent = Intent(context, HuntMainActivity::class.java)
     contentIntent.putExtra(GeofencingConstants.EXTRA_GEOFENCE_INDEX, foundIndex)
+    var intentFlagTypeUpdateCurrent = PendingIntent.FLAG_UPDATE_CURRENT
+    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
+        intentFlagTypeUpdateCurrent = PendingIntent.FLAG_IMMUTABLE
+    }
     val contentPendingIntent = PendingIntent.getActivity(
         context,
         NOTIFICATION_ID,
         contentIntent,
-        PendingIntent.FLAG_UPDATE_CURRENT
+        intentFlagTypeUpdateCurrent
     )
     val mapImage = BitmapFactory.decodeResource(
         context.resources,

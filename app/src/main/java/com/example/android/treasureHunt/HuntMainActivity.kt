@@ -45,6 +45,11 @@ private const val BACKGROUND_LOCATION_PERMISSION_INDEX = 1
 
 class HuntMainActivity : AppCompatActivity() {
 
+	companion object {
+		internal const val ACTION_GEOFENCE_EVENT = "HuntMainActivity.treasureHunt.action" +
+			".ACTION_GEOFENCE_EVENT"
+	}
+
 	private lateinit var binding: ActivityHuntMainBinding
 	private lateinit var geofencingClient: GeofencingClient
 	private lateinit var viewModel: GeofenceViewModel
@@ -83,10 +88,10 @@ class HuntMainActivity : AppCompatActivity() {
 	}
 
 	/*
- *  When we get the result from asking the user to turn on device location, we call
- *  checkDeviceLocationSettingsAndStartGeofence again to make sure it's actually on, but
- *  we don't resolve the check to keep the user from seeing an endless loop.
- */
+	 *  When we get the result from asking the user to turn on device location, we call
+	 *  checkDeviceLocationSettingsAndStartGeofence again to make sure it's actually on, but
+	 *  we don't resolve the check to keep the user from seeing an endless loop.
+	 */
 	@Suppress("DEPRECATION")
 	override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
 		super.onActivityResult(requestCode, resultCode, data)
@@ -205,7 +210,7 @@ class HuntMainActivity : AppCompatActivity() {
 						REQUEST_TURN_DEVICE_LOCATION_ON
 					)
 				} catch (sendEx: IntentSender.SendIntentException) {
-					Log.d(TAG, "Error geting location settings resolution: " + sendEx.message)
+					Log.d(TAG, "Error getting location settings resolution: " + sendEx.message)
 				}
 			} else {
 				showSnackbar(
@@ -392,10 +397,5 @@ class HuntMainActivity : AppCompatActivity() {
 		Toast.makeText(
 			this@HuntMainActivity, message, Toast.LENGTH_SHORT
 		).show()
-	}
-
-	companion object {
-		internal const val ACTION_GEOFENCE_EVENT =
-			"HuntMainActivity.treasureHunt.action.ACTION_GEOFENCE_EVENT"
 	}
 }

@@ -64,13 +64,10 @@ class GeofenceBroadcastReceiver : BroadcastReceiver() {
             return
         }
 
-        val notificationManager = ContextCompat.getSystemService(
-            context,
+        val notificationManager = ContextCompat.getSystemService(context,
             NotificationManager::class.java
         ) as NotificationManager
 
-        notificationManager.sendGeofenceEnteredNotification(
-            context, foundIndex
-        )
+        notificationManager.sendGeofenceEnteredNotification(context, foundIndex)
     }
 }
